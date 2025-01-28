@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres"
 
 export default async () => {
 
-    await sql`CREATE TABLE POSTS(
+    await sql`CREATE TABLE IF NOT EXISTS POSTS(
         id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
         content TEXT,
         url TEXT
