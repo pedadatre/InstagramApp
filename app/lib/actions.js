@@ -4,19 +4,25 @@ import { put } from "@vercel/blob"
 import { sql } from "@vercel/postgres"
 
 export async function createPost(formData){
+    const { url } = await put(
+        'media', 
+        formData.get("media"), 
+        { access: 'public'}
+    );
+    const content = formData.get('content');
+    await sql`INSERT INTO sa_posts(content, url) 
+        VALUES(
+            ${content},
+            ${url}
+        )`
 
-const { url } = await put(
-    'media', 
-    formData.get("media"), 
-    { access: 'public'}
-);
+}
 
-const content = formData.get('content');
+export async function insertLike(post_id, user_id){
 
-await sql`INSERT INTO POSTS(content, url) 
-    VALUES(
-        ${content},
-        ${url}
+    await sql`INSERT INTO sa_likes(post_id, user_id) VALUES (
+        ${post_id},  
+        ${user_id}
     )`
-
+    
 }
