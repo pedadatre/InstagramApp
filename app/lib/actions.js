@@ -24,5 +24,11 @@ export async function insertLike(post_id, user_id){
         ${post_id},  
         ${user_id}
     )`
-    
+}
+
+export async function removeLike(post_id, user_id){
+
+    await sql`DELETE FROM sa_likes 
+        WHERE post_id = ${post_id} AND user_id = ${user_id}
+    `
 }

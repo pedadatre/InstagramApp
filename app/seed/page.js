@@ -2,7 +2,7 @@ import { sql } from "@vercel/postgres"
 
 export default async () => {
 
-    await sql`DROP TABLE IF EXISTS sa_users, sa_posts`
+    await sql`DROP TABLE IF EXISTS sa_users, sa_posts, sa_likes`
     
     await sql`CREATE TABLE IF NOT EXISTS sa_users(
         user_id UUID DEFAULT uuid_generate_v4() PRIMARY KEY, 
@@ -18,10 +18,10 @@ export default async () => {
         url TEXT
     )`
 
-    // TODO: FOREIGN KEY
-    await sql`CREATE TABLE sa_likes(
-        user_id UUID,
-        post_id UUID
+    await sql`CREATE TABLE sa_likes( 
+        user_id UUID REFERENCES sa_users(user_id),
+        post_id UUID REFERENCES sa_posts(post_id),
+        PRIMARY KEY(user_id, post_id)
     )`
 
     return <p>Database seed the guay</p>

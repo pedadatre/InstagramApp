@@ -3,7 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import LikeButton from "./like-button"
 
-export default ({user_id, post_id, content, url}) => {
+export default ({user_id, post_id, content, url, isLikedInitial}) => {
     return (
         <div className="flex flex-col max-w-sm gap-2">
            <div className="flex gap-2">
@@ -28,7 +28,7 @@ export default ({user_id, post_id, content, url}) => {
 
            <div>
                 <div className="flex gap-2">
-                    <LikeButton post_id={post_id} user_id={user_id} />
+                    <LikeButton post_id={post_id} user_id={user_id} isLikedInitial={isLikedInitial} />
                     <ChatBubbleLeftIcon className="w-8" />
                 </div>
                 <span>2654 Me gusta</span>
