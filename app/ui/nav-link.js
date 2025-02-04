@@ -4,9 +4,9 @@ import { BeakerIcon, HomeIcon } from '@heroicons/react/24/solid'
 import clsx from "clsx"
 const { usePathname } = require("next/navigation");
 
-export default ({ruta, texto, icono}) => {
+export default ({ruta, texto, icon}) => {
 
-    //const objeto = { icono };
+    const objeto = { icon };
 
     const path = usePathname();
 
@@ -18,7 +18,7 @@ export default ({ruta, texto, icono}) => {
                 "font-bold pointer-events-none": path === ruta
             })}
         >
-            <HomeIcon className="w-4" />
+            <objeto.icon className="w-4" />
             <span className="hidden sm:inline">{texto}</span>
         </Link>
     )
