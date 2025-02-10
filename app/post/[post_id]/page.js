@@ -9,18 +9,11 @@ export default async ({params}) => {
     const post = (await getPost(post_id))[0];
     const like = await getLike(user_id, post_id);
 
-    console.log(post)
-
     return (<>
         <Post 
             user_id={user_id} 
-            post_id={post_id} 
-            content={post.content} 
-            url={post.url} 
+            post={post}
             isLikedInitial={like.length > 0} 
-            username={post.username}
-            num_likes={post.num_likes}
-            picture={post.picture}
         />
     </>)
 }
