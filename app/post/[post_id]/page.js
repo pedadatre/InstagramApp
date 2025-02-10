@@ -19,6 +19,6 @@ export default async ({params}) => {
             url={post.url} 
             isLikedInitial={like.length > 0} 
             username={post.username}
-            num_likes={num_likes}/>
+            num_likes={post.num_likes}/>
     </>)
 }

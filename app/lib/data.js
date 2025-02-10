@@ -12,7 +12,7 @@ SELECT
     url, 
     sa_posts.user_id, 
     username, 
-    count(*) as num_likes 
+    count(sa_likes.user_id) as num_likes 
 FROM 
     sa_posts 
     JOIN sa_users USING(user_id) 
@@ -35,7 +35,7 @@ export async function getPost(post_id){
     url, 
     sa_posts.user_id, 
     username, 
-    count(*) as num_likes 
+    count(sa_likes.user_id) as num_likes 
 FROM 
     sa_posts 
     JOIN sa_users USING(user_id) 
