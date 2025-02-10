@@ -2,6 +2,9 @@
 
 import { put } from "@vercel/blob"
 import { sql } from "@vercel/postgres"
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
+
 
 export async function createPost(formData){
     const { url } = await put(
@@ -16,6 +19,8 @@ export async function createPost(formData){
             ${url}
         )`
 
+        revalidatePath('/');
+        redirect('/');
 }
 
 export async function insertLike(post_id, user_id){

@@ -9,11 +9,10 @@ export default async () => {
     // TODO: lanzar las dos consultas a la vez
     const posts = await getPosts();
     const likes = await getLikes(user_id);
-    console.log(likes);
+
 
     return (
-        <div className="flex flex-col grow items-center gap-16 mt-24">
-
+        <div className="flex flex-col grow items-center gap-16">
             { 
                 posts.map(post => (<Post 
                     key={post.post_id} 
@@ -24,7 +23,6 @@ export default async () => {
                     url={post.url} 
                 />))
             }
-            
         </div>
     )
 }

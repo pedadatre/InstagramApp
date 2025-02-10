@@ -4,6 +4,7 @@ import Link from "next/link"
 import LikeButton from "./like-button"
 
 export default ({user_id, post_id, content, url, isLikedInitial}) => {
+
     return (
         <div className="flex flex-col max-w-sm gap-2">
            <div className="flex gap-2">
@@ -18,12 +19,14 @@ export default ({user_id, post_id, content, url, isLikedInitial}) => {
            </div>
 
            <div>
+            <Link href={`/post/${post_id}`}>
                 <Image src={url} 
                     alt="hola"
                     className=""
                     width={384}
                     height={384}
                 />
+                </Link>
            </div>
 
            <div>
