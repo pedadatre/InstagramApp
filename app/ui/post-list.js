@@ -21,6 +21,8 @@ export default async () => {
                     post_id={post.post_id} 
                     content={post.content} 
                     url={post.url} 
+                    username={post.username}
+                    num_likes={post.num_likes}
                 />))
             }
         </div>
