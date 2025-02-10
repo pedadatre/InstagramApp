@@ -9,6 +9,7 @@ export default ({
     content, 
     url, 
     username, 
+    picture,
     isLikedInitial,
     num_likes
 }) => {
@@ -16,7 +17,7 @@ export default ({
     return (
         <div className="flex flex-col max-w-sm gap-2">
            <div className="flex gap-2">
-                <Image src="/avatar.png" 
+                <Image src={picture} 
                     alt="hola"
                     className="rounded-full"
                     width={24}

@@ -12,6 +12,7 @@ SELECT
     url, 
     sa_posts.user_id, 
     username, 
+    picture,
     count(sa_likes.user_id) as num_likes 
 FROM 
     sa_posts 
@@ -22,7 +23,8 @@ GROUP BY
     content, 
     url, 
     sa_posts.user_id, 
-    username
+    username,
+    picture
 
 `).rows;
 }
@@ -35,6 +37,7 @@ export async function getPost(post_id){
     url, 
     sa_posts.user_id, 
     username, 
+    picture,
     count(sa_likes.user_id) as num_likes 
 FROM 
     sa_posts 
@@ -47,7 +50,8 @@ GROUP BY
     content, 
     url, 
     sa_posts.user_id, 
-    username 
+    username,
+    picture 
    `).rows;
 }
 

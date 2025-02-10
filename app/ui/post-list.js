@@ -22,6 +22,7 @@ export default async () => {
                     content={post.content} 
                     url={post.url} 
                     username={post.username}
+                    picture={post.picture}
                     num_likes={post.num_likes}
                 />))
             }
