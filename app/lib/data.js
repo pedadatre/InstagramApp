@@ -4,9 +4,7 @@ import { sql } from "@vercel/postgres";
 // TODO: 0 likes
 export async function getPosts(){
     return (await sql
-`
-
-SELECT 
+`SELECT 
     sa_posts.post_id, 
     content, 
     url, 
@@ -25,7 +23,6 @@ GROUP BY
     sa_posts.user_id, 
     username,
     picture
-
 `).rows;
 }
 

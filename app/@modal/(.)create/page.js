@@ -1,4 +1,4 @@
-import CreateForm from "../ui/create-form"
+import CreateForm from "@/app/ui/create-form"
 
 export default () => {
     return <CreateForm />

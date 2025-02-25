@@ -3,11 +3,10 @@
 import { put } from "@vercel/blob"
 import { sql } from "@vercel/postgres"
 import { revalidatePath } from "next/cache";
-import { redirect } from "next/navigation";
-import { auth0, uid } from "./auth0";
+import { auth0 } from "./auth0";
 
 
-export async function createPost(formData){
+export async function createPost(prevState, formData){
 
     const user_id = (await auth0.getSession()).user.user_id;
 
@@ -24,8 +23,8 @@ export async function createPost(formData){
             ${user_id}
         )`
 
-        revalidatePath('/');
-        redirect('/');
+    revalidatePath('/');
+    return { success: true };
 }
 
 export async function insertLike(post_id, user_id){
