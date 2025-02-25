@@ -42,6 +42,7 @@ export default async function RootLayout({ children, modal }) {
           {children}
           {modal}
         </div>
+        
       </body>
     </html>
   );

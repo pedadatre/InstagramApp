@@ -12,8 +12,7 @@ export default ({ruta, texto, icon}) => {
 
     return (
         <Link href={ruta} className={clsx( 
-            "flex gap-2 hover:bg-gray-500 py-1 ps-2 pe-4 rounded"
-            , 
+            "flex gap-2 hover:bg-gray-500 py-1 ps-2 pe-4 rounded", 
             {
                 "font-bold pointer-events-none": path === ruta
             })}
