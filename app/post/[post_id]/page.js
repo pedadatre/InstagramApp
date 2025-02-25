@@ -12,9 +12,8 @@ export default async ({params}) => {
     return (<>
         <Post 
             user_id={user_id} 
-            post_id={post_id} 
-            content={post.content} 
-            url={post.url} 
-            isLikedInitial={like.length > 0} />
+            post={post}
+            isLikedInitial={like.length > 0} 
+        />
     </>)
 }
