@@ -5,6 +5,7 @@ import { searchPosts } from '../lib/actions';
 import PostShort from '../ui/post-short';
 import { getLikes } from "../lib/data";
 import { auth0 } from "../lib/auth0";
+import LikeButton from '../ui/like-button';
 
 
 // export async function Likes() {
@@ -30,6 +31,7 @@ export  default  function SearchPage() {
     return (
         <div>
             <h1>Search Posts</h1>
+            <LikeButton/>
             <form onSubmit={ handleSearch}>
                 <input
                     type="text"
