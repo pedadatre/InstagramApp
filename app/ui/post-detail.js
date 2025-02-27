@@ -74,8 +74,10 @@ export default ({
                             <span className="text-white">{comment.num_likes} Likes</span>
                         </div>
                     </div>
+
                 ))}
            </div>
+           <br></br>
 
            <form action={addComment} className="mt-2">
                 <input type="hidden" name="post_id" value={post.post_id} />

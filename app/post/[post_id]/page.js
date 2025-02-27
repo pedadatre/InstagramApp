@@ -24,6 +24,6 @@ export default async ({params}) => {
             isLikedInitial={like.length > 0}
             comments={comments}
             commentsLikes={commentsLikes}
-        />
+        />  
     </>)
 }
