@@ -34,7 +34,7 @@ export default ({
                         className="rounded-lg border border-white"
                         width={284}
                         height={284}
-                        layout="responsive"
+                        // layout="responsive"
                     />
                 </Link>
            </div>
