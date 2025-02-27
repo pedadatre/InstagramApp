@@ -2,6 +2,7 @@ import { auth0 } from "@/app/lib/auth0";
 import { getComments, getLike, getPost, getCommentsLike  } from "@/app/lib/data"
 import PostDetail from "@/app/ui/post-detail";
 
+
 export default async ({params}) => {
     
     const post_id = (await params).post_id

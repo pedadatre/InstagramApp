@@ -134,7 +134,20 @@ export async function getPostsBorrar() {
         sa_users.picture
     `).rows;
     }
-    export async function getUserPosts(email) {
+    
+export async function getUserInfo(user_id) {
+     return ( await sql`
+      SELECT username, name, picture
+      FROM sa_users
+      WHERE user_id = ${user_id}
+    `).rows[0];
+    
+  }
+  
+  
+
+
+    export async function getUserPosts(user_id) {
         return (await sql`
           SELECT 
             sa_posts.post_id, 
@@ -149,7 +162,7 @@ export async function getPostsBorrar() {
             JOIN sa_users ON sa_posts.user_id = sa_users.user_id
             LEFT JOIN sa_likes ON sa_posts.post_id = sa_likes.post_id
           WHERE 
-            sa_users.email = ${email}
+            sa_users.user_id = ${user_id}
           GROUP BY 
             sa_posts.post_id, 
             sa_posts.content, 
