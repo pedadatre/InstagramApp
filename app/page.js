@@ -11,5 +11,5 @@ export default async function Home() {
 
   console.log(posts)
 
-  return <PostList user_id={user_id} posts={posts} likes={likes} />
+  return <PostList user_id={user_id} posts={posts} likes={likes}  />
 }

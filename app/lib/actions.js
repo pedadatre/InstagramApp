@@ -52,28 +52,21 @@ export async function searchPosts(searchTerm) {
     `;
     return result.rows;
 }
+export async function insertCommentsLike(comment_id, user_id){
 
-export async function insertCommentLike(comment_id, user_id) {
-    const existingLike = await sql`
-        SELECT comment_id 
-        FROM sa_comment_likes 
-        WHERE comment_id = ${comment_id} AND user_id = ${user_id}
-    `;
-
-    if (existingLike.rows.length === 0) {
-        await sql`INSERT INTO sa_comment_likes(comment_id, user_id) VALUES (
-            ${comment_id},
-            ${user_id}
-        )`;
-    }
+    await sql`INSERT INTO sa_comments_likes(comment_id, user_id) VALUES (
+        ${comment_id},  
+        ${user_id}
+  )`;
 }
 
+export async function removeCommentsLike(comment_id, user_id){
 
-export async function removeCommentLike(comment_id, user_id) {
-    await sql`DELETE FROM sa_comment_likes 
+    await sql`DELETE FROM sa_comments_likes
         WHERE comment_id = ${comment_id} AND user_id = ${user_id}
     `
 }
+
 
 export async function addComment(formData) {
     const user_id = (await auth0.getSession()).user.user_id;

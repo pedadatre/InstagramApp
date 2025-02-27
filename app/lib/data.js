@@ -58,22 +58,29 @@ GROUP BY
     picture 
    `).rows;
 }
-
 export async function getComments(post_id) {
-    return (await sql`
-      SELECT 
-        sa_comments.comment_id,
-        sa_comments.content, 
-        sa_users.username, 
-        sa_users.picture,
-        sa_comments.created_at
-      FROM 
-        sa_comments
-        JOIN sa_users ON sa_comments.user_id = sa_users.user_id
-      WHERE sa_comments.post_id = ${post_id}
-      ORDER BY sa_comments.created_at
-    `).rows;
-  }
+  return (await sql`
+    SELECT 
+      sa_comments.comment_id,
+      sa_comments.content, 
+      sa_users.username, 
+      sa_users.picture,
+      sa_comments.created_at,
+      COUNT(sa_comments_likes.user_id) AS num_likes
+    FROM 
+      sa_comments
+      JOIN sa_users ON sa_comments.user_id = sa_users.user_id
+      LEFT JOIN sa_comments_likes ON sa_comments.comment_id = sa_comments_likes.comment_id
+    WHERE sa_comments.post_id = ${post_id}
+    GROUP BY 
+      sa_comments.comment_id,
+      sa_comments.content, 
+      sa_users.username, 
+      sa_users.picture,
+      sa_comments.created_at
+    ORDER BY sa_comments.created_at
+  `).rows;
+}
 
 export async function getLikes(user_id){
     return (await sql`
@@ -91,6 +98,21 @@ export async function getLike(user_id, post_id){
     `).rows;
 }
 
+export async function getCommentsLikes(user_id){
+  return (await sql`
+      SELECT comments_id 
+      FROM sa_comments_likes 
+      WHERE user_id = ${user_id}
+  `).rows;
+}
+
+export async function getCommentsLike(user_id, comment_id){
+  return (await sql`
+      SELECT comment_id 
+      FROM sa_comments_likes
+      WHERE user_id = ${user_id} AND comment_id=${comment_id}
+  `).rows;
+}
 export async function getPostsBorrar() {
     return (await sql`
       SELECT 
